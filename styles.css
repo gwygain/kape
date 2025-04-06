@@ -1,0 +1,580 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f1d1af;
+  color: #662e17;
+}
+
+/* Header styles - complete overhaul for consistent centering */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #662e17;
+  color: #f5f5f5;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Remove any display: flex that might be causing issues */
+}
+
+.header-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  text-align: center;
+}
+
+.header-title h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff1d5;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* Sidebar styles - updated to start below header */
+.sidebar {
+  width: 250px;
+  background-color: #662e17;
+  color: #f5f5f5;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  height: calc(100vh - 70px);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 90;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+.nav-links a {
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-links a:hover {
+  background-color: #ac5c50;
+}
+
+.nav-links a.active {
+  background-color: #ac5c50;
+  border-left: 4px solid #fff1d5;
+  font-weight: 500;
+}
+
+.nav-links i {
+  font-size: 1.2rem;
+}
+
+.social {
+  margin-top: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.social i {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.social i:hover {
+  color: #fff1d5;
+}
+
+
+
+
+.content {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  padding: 90px 2rem 4rem 2rem; /* Increased bottom padding */
+  position: relative;
+  min-height: calc(100vh - 70px); /* Subtract header height only */
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  flex: 1;
+  padding: 0;
+  position: relative;
+}
+
+.page.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Home Page */
+.hero {
+  background-image: url('coffeeshop.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 450px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  color: #fff1d5;
+  position: relative;
+  padding: 0 3rem;
+  max-width: 600px;
+}
+
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.hero p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+.cta-button {
+  background-color: #ac5c50;
+  color: #fff1d5;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  background-color: #cb896e;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.feature-card {
+  background-color: #fff1d5;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-card i {
+  font-size: 2.5rem;
+  color: #662e17;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Menu Page */
+.menu-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+#menu h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #662e17;
+}
+
+#menu p {
+  margin-bottom: 2rem;
+}
+
+.menu-category {
+  margin-bottom: 8rem;
+}
+
+.menu-category h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.menu-category h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 3px;
+  background-color: #ac5c50;
+}
+
+.menu-item {
+  background-color: #fff1d5;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.menu-item h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 0.5rem;
+}
+
+.menu-item p {
+  color: #6b6b6b;
+  margin-bottom: 1rem;
+}
+
+.menu-item .price {
+  font-weight: bold;
+  color: #ac5c50;
+  font-size: 1.1rem;
+  margin-top: auto;
+}
+
+/* Music Page */
+.events-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+#music h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#music p {
+  margin-bottom: 2rem;
+}
+
+#music h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+}
+
+.event-card {
+  background-color: #fff1d5;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.event-image {
+  height: 280px;
+  overflow: hidden;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-info {
+  padding: 1.5rem;
+}
+
+.event-info h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 0.5rem;
+}
+
+.event-date {
+  color: #ac5c50;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  font-style: italic;
+}
+
+.event-date i {
+  margin-right: 0.5rem;
+}
+
+/* Jobs Page */
+.jobs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+#jobs h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#jobs h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+#jobs p {
+  margin-bottom: 1.5rem;
+}
+
+.job-card {
+  background-color: #fff1d5;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.job-card h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+.job-type {
+  color: #ac5c50;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  font-style: italic;
+}
+
+.job-type i {
+  margin-right: 0.5rem;
+}
+
+.job-description {
+  margin-bottom: 1.5rem;
+}
+
+.job-description h4 {
+  font-family: 'Playfair Display', serif;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.job-description ul {
+  padding-left: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.job-description li {
+  margin-bottom: 0.5rem;
+}
+
+.apply-btn {
+  background-color: #ac5c50;
+  color: #fff1d5;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin-top: auto;
+}
+
+.apply-btn:hover {
+  background-color: #cb896e;
+}
+
+/* Footer Styles - Modified */
+/* Footer Styles - Modified to overlay sidebar */
+.footer {
+  background-color: #662e17;
+  color: #f5f5f5;
+  padding: 1rem 0;
+  width: 100%;
+  position: fixed; /* Change from relative to fixed */
+  bottom: 0; /* Stick to bottom */
+  left: 0;
+  right: 0;
+  z-index: 101;
+}
+
+
+/* Simplify the footer-bottom */
+.footer-bottom {
+  text-align: center;
+  padding: 0.5rem 0;
+  border-top: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+/* Modified content area to accommodate footer overlay */
+
+
+/* Remove the footer-content section entirely */
+.footer-content {
+  display: none;
+}
+
+/* Simplify the footer-bottom */
+.footer-bottom {
+  text-align: center;
+  padding: 0.5rem 0;
+  border-top: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+/* Fade-in effect for the page content */
+.page {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Slide-in effect for header */
+.header {
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+/* Slide-in effect for sidebar */
+.sidebar {
+  transform: translateX(-100px);
+  opacity: 0;
+  animation: slideIn 0.8s ease-out forwards 0.5s;
+}
+
+/* Button hover effect */
+.cta-button, .apply-btn {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover, .apply-btn:hover {
+  background-color: #d2691e; /* Darker coffee color */
+  transform: scale(1.05);
+}
+
+/* Menu item hover effect */
+.menu-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* Add smooth scrolling for page content */
+html {
+  scroll-behavior: smooth;
+}
